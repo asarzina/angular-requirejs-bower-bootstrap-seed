@@ -3,6 +3,7 @@ require.config({
 		// Core libraries
 		angular: '../bower_components/angular/angular',
 		text: '../bower_components/requirejs-text/text',
+		domReady: '../bower_components/requirejs-domready/domReady',
 		// Plugins
 		jquery: '../bower_components/jquery/jquery',
 		bootstrap: '../bower_components/bootstrap/dist/js/bootstrap'
@@ -22,8 +23,11 @@ require.config({
 require( [
 	'angular',
 	'app',
+	'domReady', 
 	'routes'
-], function(angular, app, routes) {
+], function(angular, app, domReady, routes) {
 	'use strict';
-		angular.bootstrap(document, [app['name']]);
+		domReady(function() {
+			angular.bootstrap(document, [app['name']]);
+		});
 });
